@@ -1,5 +1,5 @@
 <ul class="nav nav-pills">
-    <li><a href="newcv.php"><strong>Add New</strong></a></li>
+    <li><a href="newcv.php"><strong>Personal Info</strong></a></li>
     <li><a href="buy.php">Buy</a></li>
     <li><a href="sell.php">Sell</a></li>
     <li><a href="history.php">History</a></li>
@@ -8,7 +8,7 @@
 <form action="newcv.php" method="post">
     <fieldset>
         <div>
-            Personal Info:
+            
         </div>
         <div class="control-group">  
         <?php
@@ -41,7 +41,7 @@
                 
         </div>
         <div class="control-group">        
-            <button type="button" class="btn">Back</button>           
+          <!--  <button type="button" class="btn">Back</button>  -->         
             <button type="submit" class="btn">Save</button>
         </div>
         <div class="control-group">
