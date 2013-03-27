@@ -29,7 +29,7 @@
         
         else
         {        
-            $result = query("INSERT INTO users (username, hash, cash) VALUES(?, ?, 1)", $_POST["username"], crypt($_POST["password"]));
+            $result = query("INSERT INTO users (username, hash) VALUES(?, ?)", $_POST["username"], crypt($_POST["password"]));
         
             if ($result === false)
             {
@@ -41,6 +41,7 @@
                 $rows = query("SELECT LAST_INSERT_ID() AS id"); 
                 $id = $rows[0]["id"];                
                 $_SESSION["id"] = $id;
+                query("INSERT INTO personal_info (user_id) VALUES(?)", $id); 
                 redirect("/");
             }
         }
