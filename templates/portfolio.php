@@ -29,13 +29,13 @@
             print("</tr>");
         }
         
-            print("<tr>");
+         /*   print("<tr>");
             print("<td>CASH</td>");
             print("<td></td>");
             print("<td></td>");
             print("<td></td>");
             print("<td>" . $cash . "</td>");
-            print("</tr>");
+            print("</tr>");*/
 
     ?>
 </table>

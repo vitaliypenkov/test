@@ -3,13 +3,13 @@
     require("../includes/config.php");   
     
     $positions = [];
-    $cash;
+  //  $cash;
     $id  = $_SESSION["id"];
-    $rows = query("select cash from users where id = ?", $id);
-    foreach ($rows as $row)
+  //  $rows = query("select cash from users where id = ?", $id);
+  /*  foreach ($rows as $row)
     {         
         $cash = number_format($row["cash"], 2, '.', ',');
-    }
+    } */
     
     $rows = query("select * from portfolio where id = ?", $id);
     foreach ($rows as $row)
@@ -25,6 +25,6 @@
             ];
         }
     }
-    render("portfolio.php", ["cash" => $cash,"positions" => $positions, "title" => "Portfolio"]);
+    render("portfolio.php", ["positions" => $positions, "title" => "Portfolio"]);
 
 ?>
