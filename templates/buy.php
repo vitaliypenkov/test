@@ -13,7 +13,7 @@
         </div>
         <div class="control-group">
           <input name="shares" placeholder="Shares" type="text"/>
-        </div>
+        </div>l
         <div class="control-group">
             <button type="submit" class="btn">Buy</button>
         </div>
