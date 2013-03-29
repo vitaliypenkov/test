@@ -16,6 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `exp`
+--
+
+DROP TABLE IF EXISTS `exp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `exp` (
+  `value` int(11) NOT NULL,
+  `name` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `exp`
+--
+
+LOCK TABLES `exp` WRITE;
+/*!40000 ALTER TABLE `exp` DISABLE KEYS */;
+INSERT INTO `exp` VALUES (1,'Junior'),(2,'Middle'),(3,'Expert');
+/*!40000 ALTER TABLE `exp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personal_info`
 --
 
@@ -37,7 +60,7 @@ CREATE TABLE `personal_info` (
 
 LOCK TABLES `personal_info` WRITE;
 /*!40000 ALTER TABLE `personal_info` DISABLE KEYS */;
-INSERT INTO `personal_info` VALUES (12,'as','sa','da'),(15,'z','x','c');
+INSERT INTO `personal_info` VALUES (12,'My1','Last','Name'),(15,'z','x','c');
 /*!40000 ALTER TABLE `personal_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,6 +89,32 @@ LOCK TABLES `portfolio` WRITE;
 /*!40000 ALTER TABLE `portfolio` DISABLE KEYS */;
 INSERT INTO `portfolio` VALUES (7,'B','Barnes Group, Inc',6,27.83),(7,'DVN.V','',16,0.23);
 /*!40000 ALTER TABLE `portfolio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `skills`
+--
+
+DROP TABLE IF EXISTS `skills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `skills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `skill` varchar(30) NOT NULL,
+  `exp` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `skills`
+--
+
+LOCK TABLES `skills` WRITE;
+/*!40000 ALTER TABLE `skills` DISABLE KEYS */;
+INSERT INTO `skills` VALUES (2,12,'java',1),(3,12,'nrt',1),(17,14,'java',3);
+/*!40000 ALTER TABLE `skills` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -132,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-27 14:39:30
+-- Dump completed on 2013-03-29 11:51:04
