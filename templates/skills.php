@@ -6,38 +6,58 @@
     <li><a href="logout.php">Log Out</a></li>
 </ul>
 
-
-<?php
-
-function add()
-{
-print("<div class='control-group'>");
-print("<input name='skill1_name' placeholder='Skill1' type='text'/>");
-print("");
-print("");
-print("");
-print("");
-}
-   
-?>
-<form action="newcv.php" method="post">
+<form action="skills.php" method="post">
     <fieldset>
         <div>
         Technology    
         </div>
-        <div class="control-group">
-          <input id="skill" name="skill1_name" placeholder="Skill1" type="text"/>
-          <select idd ="level" name="skill1_exp">
-            <option value="0">Please Select</option>
-            <option value="1">Junior</option>
-            <option value="2">Middle</option>
-            <option value="3">Expert</option>
-          </select>
+        
+         <?php
+            $count = count($skills); 
+           // var_dump($count);
+            var_dump($skills);                
+            if (!empty($skills[0]))
+            {
+                for ($i = 0; $i < $count; $i++)
+                {
+                    print ("<div class='control-group'>");
+                    print ("<input type='checkbox' id = sel" . $i . " name = 'skill" . $i. "_sel'/>");
+                  //  print ("<input id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");  
+                    print ("<input id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");  
+                    
+                    print ("<select id =\"level$i\" name=\"skill_exp[]\">");   
+                    print ("<option value='0'>Please Select</option>");
+                    print ("<option value='1' selected='selected'>Junior</option>");
+                    print ("<option value='2'>Middle</option>");
+                    print ("<option value='3'>Expert</option>");
+                    print (" </select>");   
+                    print ("<input id=\"id$i\" name=\"skill_id[]\" value=\"{$skills[$i]["id"]}\" style=\"visibility:hidden;\"  type=\"text\"/>");         
+                    print ("</div>");
+                 }
+            }
+            
+            else
+            {
+                    print ("<div class='control-group'>");
+                    print ("<input type='checkbox' id = sel0 name = 'skill0_sel'/>");
+                    print ("<input id=\"skill0\" name=\"skill_name[]\" placeholder=\"Please fill in technology\" type=\"text\"/>");  
+                    print ("<select id =\"level0\" name=\"skill_exp[]\">");   
+                    print ("<option value='0'>Please Select</option>");
+                    print ("<option value='1'>Junior</option>");
+                    print ("<option value='2'>Middle</option>");
+                    print ("<option value='3'>Expert</option>");
+                    print (" </select>");          
+                    print ("</div>");
+            }
+         
+         ?>
+        
+
+        <div class="control-group">  
+            <button type="button" id="add" onClick="add()" class="btn">Add More</button>
         </div>
         <div class="control-group">  
-            <button type="button" id="add" onClick="add()" class="btn">Add</button>
-        </div>
-        <div class="control-group">  
+            <button type="button" id="remove" class="btn">Remove Selected</button>
             <button type="submit" class="btn">Save</button>
         </div>
     </fieldset>

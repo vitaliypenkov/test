@@ -18,7 +18,7 @@
             }
             else
             {
-                print ("<input name='fname' placeholder=" . $details[0]["fname"] ." type='text'/>");
+                print ("<input name='fname' value=" . $details[0]["fname"] ." type='text'/>");
             }        
             if ($details[0]["lname"] == NULL)
             {
@@ -26,7 +26,7 @@
             }
             else
             {
-                print ("<input name='lname' placeholder=" . $details[0]["lname"] ." type='text'/>");
+                print ("<input name='lname' value=" . $details[0]["lname"] ." type='text'/>");
             }
         
             if ($details[0]["mname"] == NULL)
@@ -35,7 +35,7 @@
             }
             else
             {
-                print ("<input name='mname' placeholder=" . $details[0]["mname"] ." type='text'/>");
+                print ("<input name='mname' value=" . $details[0]["mname"] ." type='text'/>");
             }
         ?>  
                 
