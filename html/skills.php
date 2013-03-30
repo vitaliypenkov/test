@@ -16,54 +16,25 @@
     
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {  
-      // var_dump($_POST["skill_name"]);
-    // var_dump($_POST);
-     /*   if (empty($_POST["skill_name"]))
-        {
-            //foreach()
-            apologize("Please enter skill first");
-            
-        } */        
-    //    else
-        {
-        $n = [];
-        $e = [];
-        $skill_id = [];
-        
-           foreach($_POST["skill_name"] as $i => $name)
-           {           
-                $n[$i] = $name;
-           }
-             
-           foreach($_POST["skill_exp"] as $i => $exp)
-           {
-                $e[$i] = $exp;
-           }
+     //  var_dump($_POST["skill_name"]);     
            
-           foreach($_POST["skill_id"] as $i => $d)
-           {
-                $skill_id[$i] = $d;
-           }
-           
-           for ($i = 0; $i<count($n); $i++)
+           for ($i = 0; $i<count($_POST["skill_name"]); $i++)
            {
                 //if the skill is new, insert entered data
-                if (empty($skill_id[$i]))
+                if (empty($_POST["skill_id"][$i]))
                 {
-                    query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $n[$i], $e[$i]);           
+                    query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $_POST["skill_name"][$i], $_POST["skill_exp"][$i]);           
                 }
                 
                 //ifgi the skill already exists, update it
                 else
                 {
-                    query("update skills set skill = ?, exp = ?", $n[$i], $e[$i]);
+                    query("update skills set skill = ?, exp = ?", $_POST["skill_name"][$i], $_POST["skill_exp"][$i]);
                 }           
               
            }
                
-        redirect("/skills.php");
-           
-        }
+        redirect("/skills.php");  
     
     }    
     

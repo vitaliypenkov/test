@@ -88,14 +88,14 @@
 <script type="text/javascript"><!--
 $(document).ready(function() {
   var new_btn = $('<button id="btn">Click</button>');          // new button
-  var new_span = $('<span>START</span>').addClass('spn');      // new <span> with class="spn"
-    var new_imput = $('<input placeholder="HA" ></input>')
-  new_btn.insertAfter('#skill');        // insert the new button after the tag with id="idd"
+  var new_span = $('<button id="btn">HA</button>');      // new <span> with class="spn"
+    var new_imput = $('<input placeholder="HA" ></input>');
+  new_btn.insertAfter('#add');        // insert the new button after the tag with id="idd"
 
   // now we use the new added button, when is clicked
   $('#btn').click(function() {
     // insert the "new_span" at the beginning inside all DIVs with class="cls"
-    new_span.insertAfter('#level');
+    new_span.append('#add');
   });
 });
 --></script>
