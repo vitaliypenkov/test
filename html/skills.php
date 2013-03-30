@@ -23,8 +23,7 @@
             //foreach()
             apologize("Please enter skill first");
             
-        } */
-        
+        } */        
     //    else
         {
         $n = [];
@@ -51,11 +50,10 @@
                 //if the skill is new, insert entered data
                 if (empty($skill_id[$i]))
                 {
-                    query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $n[$i], $e[$i]);
-           
+                    query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $n[$i], $e[$i]);           
                 }
                 
-                //if the skill already exists, update it
+                //ifgi the skill already exists, update it
                 else
                 {
                     query("update skills set skill = ?, exp = ?", $n[$i], $e[$i]);
