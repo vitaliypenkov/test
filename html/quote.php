@@ -13,7 +13,7 @@
         $stock = lookup($_POST["quote"]);
         if($stock === false)
         {
-            echo "There are no stocks matching that symbol";
+            echo "There are no socks matching that symbol";
         }
         
         else
