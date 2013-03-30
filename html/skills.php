@@ -3,7 +3,6 @@
     require("../includes/config.php"); 
     $id = $_SESSION["id"];
     
-    
     $rows = query("select * from skills where user_id = ?", $id);
     $skills = []; 
     foreach ($rows as $row)
@@ -14,8 +13,6 @@
             "id" => $row["id"]          
             ];
     }
-    
-    
     
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {  
@@ -28,13 +25,11 @@
             
         } */
         
-        
-        
     //    else
         {
         $n = [];
         $e = [];
-        $id = [];
+        $skill_id = [];
         
            foreach($_POST["skill_name"] as $i => $name)
            {           
@@ -48,30 +43,31 @@
            
            foreach($_POST["skill_id"] as $i => $d)
            {
-                $id[$i] = $d;
+                $skill_id[$i] = $d;
            }
            
            for ($i = 0; $i<count($n); $i++)
            {
-           
-                $result = query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $n[$i], $e[$i]);
-           
-                if ($result === false)
+                //if the skill is new, insert entered data
+                if (empty($skill_id[$i]))
                 {
-                    apologize("Something went wrong. Please try again");
-                }  
-              //   var_dump($n[$i]); 
-              //  var_dump($e[$i]);    
+                    query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $n[$i], $e[$i]);
+           
+                }
+                
+                //if the skill already exists, update it
+                else
+                {
+                    query("update skills set skill = ?, exp = ?", $n[$i], $e[$i]);
+                }           
+              
            }
-           
-           
                
         redirect("/skills.php");
            
         }
     
-    }
-    
+    }    
     
        else
     {        

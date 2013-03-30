@@ -13,29 +13,51 @@
         </div>
         
          <?php
-            $count = count($skills); 
-           // var_dump($count);
-            var_dump($skills);                
+            $count = count($skills);          
+           // var_dump($skills);   
+            //if any skills found, display prepopulated fields             
             if (!empty($skills[0]))
             {
                 for ($i = 0; $i < $count; $i++)
-                {
+                {                       
                     print ("<div class='control-group'>");
-                    print ("<input type='checkbox' id = sel" . $i . " name = 'skill" . $i. "_sel'/>");
-                  //  print ("<input id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");  
-                    print ("<input id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");  
+                    print ("<input type='checkbox' id = \"sel$i\" name = \"{$skills[$i]["id"]}\" />");                  
+                    print ("<input id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");                      
+                    print ("<select id =\"level$i\" name=\"skill_exp[]\">");
+                    print ("<option value='0'>Please Select</option>");                    
+                    if ($skills[$i]["exp"]== 1)
+                    {
+                        print ("<option value=\"1\" selected=\"selected\">Junior</option>");
+                    }
+                    else
+                    {
+                         print ("<option value=\"1\">Junior</option>");
+                    }
                     
-                    print ("<select id =\"level$i\" name=\"skill_exp[]\">");   
-                    print ("<option value='0'>Please Select</option>");
-                    print ("<option value='1' selected='selected'>Junior</option>");
-                    print ("<option value='2'>Middle</option>");
-                    print ("<option value='3'>Expert</option>");
+                    if ($skills[$i]["exp"]== 2)
+                    {
+                        print ("<option value=\"2\" selected=\"selected\">Middle</option>");
+                    }
+                    else
+                    {
+                         print ("<option value='2'>Middle</option>");
+                    }
+                    
+                    if ($skills[$i]["exp"]== 3)
+                    {
+                        print ("<option value=\"3\" selected=\"selected\">Expert</option>");
+                    }
+                    else
+                    {
+                         print ("<option value='3'>Expert</option>");
+                    } 
                     print (" </select>");   
                     print ("<input id=\"id$i\" name=\"skill_id[]\" value=\"{$skills[$i]["id"]}\" style=\"visibility:hidden;\"  type=\"text\"/>");         
                     print ("</div>");
                  }
-            }
+            }           
             
+            // if no skills found, display empty fields
             else
             {
                     print ("<div class='control-group'>");
@@ -57,7 +79,7 @@
             <button type="button" id="add" onClick="add()" class="btn">Add More</button>
         </div>
         <div class="control-group">  
-            <button type="button" id="remove" class="btn">Remove Selected</button>
+            <button type="submit" id="del" class="btn">Delete Selected</button>
             <button type="submit" class="btn">Save</button>
         </div>
     </fieldset>
