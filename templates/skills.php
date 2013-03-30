@@ -89,13 +89,13 @@
 $(document).ready(function() {
   var new_btn = $('<button id="btn">Click</button>');          // new button
   var new_span = $('<button id="btn">HA</button>');      // new <span> with class="spn"
-    var new_imput = $('<input placeholder="HA" ></input>');
+    var new_input = $('<input placeholder="HA" ></input>');
   new_btn.insertAfter('#add');        // insert the new button after the tag with id="idd"
 
   // now we use the new added button, when is clicked
   $('#btn').click(function() {
     // insert the "new_span" at the beginning inside all DIVs with class="cls"
-    new_span.append('#add');
+    new_span.prepend('#add');
   });
 });
 --></script>
