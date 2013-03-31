@@ -1,8 +1,9 @@
 <ul class="nav nav-pills">
     <li><a href="newcv.php">Personal Info</a></li>
+    <li><a href="goal.php">Goal</a></li>
+    <li><a href="education.php">Education</a></li>
+    <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php"><strong>Skills</strong></a></li>    
-    <li><a href="sell.php">Sell</a></li>
-    <li><a href="history.php">History</a></li>
     <li><a href="logout.php">Log Out</a></li>
 </ul>
 
@@ -52,7 +53,7 @@
                          print ("<option value='3'>Expert</option>");
                     } 
                     print (" </select>");   
-                    print ("<input id=\"id$i\" name=\"skill_id[]\" value=\"{$skills[$i]["id"]}\" style=\"visibility:hidden;\"  type=\"text\"/>");         
+                    print ("<input id=\"id$i\" name=\"skill_id[]\" value=\"{$skills[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/>");         
                     print ("</div>");
                  }
             }           
@@ -60,8 +61,8 @@
             // if no skills found, display empty fields
             else
             {
-                    print ("<div id=id0 class='control-group'>");
-                    print ("<input type='checkbox' id = sel0 name = 'skill0_sel'/>");
+                    print ("<div id=div0 class='control-group'>");
+                    print ("<input type='checkbox' id = sel0/>");
                     print ("<input id=\"skill0\" name=\"skill_name[]\" placeholder=\"Please fill in technology\" type=\"text\"/>");  
                     print ("<select id =\"level0\" name=\"skill_exp[]\">");   
                     print ("<option value='0'>Please Select</option>");
@@ -75,10 +76,8 @@
          ?>        
 
         <div class="control-group">  
-            <button type="button" id="add" onClick="add()" class="btn">Add More</button>
-        </div>
-        <div class="control-group">  
-            <button type="submit" id="del" class="btn">Delete Selected</button>
+            <button type="button" id="del" class="btn">Delete Selected</button>
+            <button type="button" id="add" class="btn">Add More</button>
             <button type="submit" class="btn">Save</button>
         </div>
     </fieldset>
@@ -86,35 +85,55 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
 <!--
-$(document).ready(function() {    
-    var new_check = $("<input type='checkbox'/\>");
-    var new_name = $("<input name=skill_name[] placeholder=\"Please fill in technology\" type=\"text\"/\>");     
+$(document).ready(function() {
     
-    
-    // alert(i);
-    var is_last = false;
+    $('#del').click(function() 
+    {
+        var dels = [];
+        $("input:checked").each(function()
+        {
+            var code = $(this).attr('name');            
+            dels.push(code);
+        });
    
-    // var her = get;
-  // now we use the new added button, when is clicked
-  $('#add').click(function() {
-   var template = "div";   
+       $.ajax({
+       url: 'skills.php',
+       type: 'POST',
+       data: {
+            del: dels
+       },
+       success: function(response){
+       window.location.reload();
+       } 
+    }); 
     
-    var next_name;
-    //next_name = template + 1;
-   //alert("last element is " + next_name);
-    for (var i = 0; i < 5; i++)
+    });
+          
+  // now we use the new added button, when is clicked
+  $('#add').click(function() 
+  {    
+    var template = "div";       
+    var next_name;    
+    var i = 0;
+    while(true)   
     {
        next_name = template + i;
        if ($('#' + next_name).length <= 0)
-        {
-           // alert("last element is " + next_name);
+        {           
+            //alert(next_name);
             break;
-        }       
+        } 
+       i++;     
     }
-    // insert the "new_span" at the beginning inside all DIVs with class="cls" 
+    
     var new_div = $('<div id='+ next_name +' ></div>').addClass("control-group");
+    var new_check = $("<input type='checkbox'/\>");
+    var new_name = $("<input name=skill_name[] placeholder=\"Please fill in technology\" type=\"text\"/\>");     
     var new_exp = $('<select id =\"level'+ next_name.substring(3) +'\" name=\"skill_exp[]\">');  
-    var previous_name = template + (next_name.substring(3) - 1);   
+    var previous_name = template + (next_name.substring(3) - 1);
+    if (previous_name == "div-1") {
+        previous_name = "div0";
+    }
     new_div.insertAfter('#' + previous_name);
     new_check.appendTo('#' + next_name);
     new_name.appendTo('#' + next_name);
@@ -125,8 +144,7 @@ $(document).ready(function() {
      $('#level' + next_name.substring(3))
           .append($('<option>', { value : key })
           .text(value)); 
-    });
-    
-  });
+    });   
+  }); 
 });
 --></script>

@@ -13,11 +13,20 @@
             "id" => $row["id"]          
             ];
     }
-    
+   
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {  
-       var_dump($_POST);     
-           
+         
+       if (!empty($_POST["del"]))       
+       {
+          for ($i = 0; $i<count($_POST["del"]); $i++)
+          {            
+            query("delete from skills where id =?", $_POST["del"][$i]);                
+          }
+       }
+       else
+       {  
+           var_dump($_POST);     
            for ($i = 0; $i<count($_POST["skill_name"]); $i++)
            {
                 //if the skill is new, insert entered data
@@ -29,12 +38,12 @@
                 //if the skill already exists, update it
                 else
                 {
-                    query("update skills set skill = ?, exp = ?", $_POST["skill_name"][$i], $_POST["skill_exp"][$i]);
+                    query("update skills set skill = ?, exp = ? where id = ?", $_POST["skill_name"][$i], $_POST["skill_exp"][$i], $_POST["skill_id"][$i]);
                 }           
               
            }
-               
-        //redirect("/skills.php");  
+        }       
+        redirect("/skills.php");  
     
     }    
     
