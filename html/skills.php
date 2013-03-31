@@ -16,7 +16,7 @@
     
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {  
-     //  var_dump($_POST["skill_name"]);     
+       var_dump($_POST);     
            
            for ($i = 0; $i<count($_POST["skill_name"]); $i++)
            {
@@ -26,7 +26,7 @@
                     query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $_POST["skill_name"][$i], $_POST["skill_exp"][$i]);           
                 }
                 
-                //ifgi the skill already exists, update it
+                //if the skill already exists, update it
                 else
                 {
                     query("update skills set skill = ?, exp = ?", $_POST["skill_name"][$i], $_POST["skill_exp"][$i]);
@@ -34,7 +34,7 @@
               
            }
                
-        redirect("/skills.php");  
+        //redirect("/skills.php");  
     
     }    
     

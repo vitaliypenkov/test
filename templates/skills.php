@@ -86,29 +86,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
 <!--
-$(document).ready(function() {
- // var new_btn = $('<button id="btn">Click</button>');          // new button
-  var new_btn = $('<button id="btn">HA</button>');      // new <span> with class="spn"
-    var new_input = $('<input placeholder="HA" ></input>');
-    var new_div = $('<div id=div1 ></div>').addClass("control-group");
-    var new_check = $("<input type='checkbox' id = 'sel1' /\>");
-    var new_name = $("<input id=skill1 name=skill_name[] placeholder=\"Please fill in technology\" type=\"text\"/\>");
+$(document).ready(function() {    
+    var new_check = $("<input type='checkbox'/\>");
+    var new_name = $("<input name=skill_name[] placeholder=\"Please fill in technology\" type=\"text\"/\>");     
+    
+    
+    // alert(i);
+    var is_last = false;
    
-   // var new_exp = $("<option value=\"0\">Please Select</option>");
-   var new_exp = $("<select id =\"level1\" name=\"skill_exp[]\">");
- // new_btn.insertAfter('#add');        // insert the new button after the tag with id="idd"
-
+    // var her = get;
   // now we use the new added button, when is clicked
   $('#add').click(function() {
-    // insert the "new_span" at the beginning inside all DIVs with class="cls"    
-    new_div.insertAfter('#div0');
-    new_check.appendTo('#div1');
-    new_name.appendTo('#div1');
-    new_exp.appendTo('#div1');
+   var template = "div";   
+    
+    var next_name;
+    //next_name = template + 1;
+   //alert("last element is " + next_name);
+    for (var i = 0; i < 5; i++)
+    {
+       next_name = template + i;
+       if ($('#' + next_name).length <= 0)
+        {
+           // alert("last element is " + next_name);
+            break;
+        }       
+    }
+    // insert the "new_span" at the beginning inside all DIVs with class="cls" 
+    var new_div = $('<div id='+ next_name +' ></div>').addClass("control-group");
+    var new_exp = $('<select id =\"level'+ next_name.substring(3) +'\" name=\"skill_exp[]\">');  
+    var previous_name = template + (next_name.substring(3) - 1);   
+    new_div.insertAfter('#' + previous_name);
+    new_check.appendTo('#' + next_name);
+    new_name.appendTo('#' + next_name);
+    new_exp.appendTo('#'+ next_name);
     
     selectValues = {"0": "Please select", "1": "Junior", "2": "Middle", "3": "Expert" };
     $.each(selectValues, function(key, value) {   
-     $('#level1')
+     $('#level' + next_name.substring(3))
           .append($('<option>', { value : key })
           .text(value)); 
     });
