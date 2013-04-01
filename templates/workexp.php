@@ -10,7 +10,7 @@
 
 <form action="workexp.php" method="post">
 
-    <table class="table table-bordered">
+    <table id="table" class="table table-bordered">
     
     <?php    
         print("<tr>");
@@ -21,8 +21,8 @@
         print("<th>End date</th>");
         print("</tr>");
 
-            $count = count($wexps);          
-           // var_dump($wexps);   
+            $count = count($wexps);         
+              
             //if any skill found, display prepopulated fields             
             if (!empty($wexps[0]))
             {
@@ -40,7 +40,7 @@
             else
             {            
                     print ("<tr><th>");
-                    print ("<input type='checkbox' id = \"sel0\"/></div></th>");                  
+                    print ("<input type='checkbox' id = \"sel0\"/></th>");                  
                     print ("<th><input name=\"company[]\" placeholder=\"Please specify company\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"position[]\" placeholder=\"Please specify position\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/></th>");                                                        
@@ -90,23 +90,13 @@ $(document).ready(function() {
           
   // now we use the new added button, when is clicked
   $('#add').click(function() 
-  {    
-    
-    var new_tr = $("<tr><td>dfhsd</td></tr>");
-
-//    var new_check = $("<input type='checkbox'/\>");
-//    var new_name = $("<input name=skill_name[] placeholder=\"Please fill in technology\" type=\"text\"/\>");     
-//    var new_exp = $('<select id =\"level'+ next_name.substring(3) +'\" name=\"skill_exp[]\">');  
-//    var previous_name = template + (next_name.substring(3) - 1); 
-   // alert("Previous: " + previous_name);  
-    new_tr.insertAfter('#middle');
-//    new_tr.insertBefore("</table>");
-        
-//    new_check.appendTo('#' + next_name);
-//    new_name.appendTo('#' + next_name);
-//    new_exp.appendTo('#'+ next_name);
-    
-
+  {  
+    var checkbox = ('<tr><th><input type=\"checkbox\" id = \"sel0\"/\></th>');
+    var company = ('<th><input name=\"company[]\" placeholder=\"Please specify company\" type=\"text\"/\></th>');
+    var position = ("<th><input name=\"position[]\" placeholder=\"Please specify position\" type=\"text\"/\></th>"); 
+    var start_date =  ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/\></th>");                                                        
+    var end_date = ("<th><input name=\"end_date[]\" placeholder=\"Please specify end date\" type=\"text\"/\></th></tr>");        
+    $('#table tr:last').after(checkbox + company + position + start_date + end_date);
       
   }); 
 });

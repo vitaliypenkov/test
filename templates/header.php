@@ -38,7 +38,7 @@
                 ?>  !<br/>
                  <?php } ?>
                
-                <a href="/"><img alt="C$50 Finance" src="img/logo.gif"/></a>
+                <a href="/"><img alt="CV Maker src="img/logo.png"/></a>
             </div>
 
             <div id="middle">
