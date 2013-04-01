@@ -35,27 +35,28 @@
                 //if the skill is new, insert entered data
                 if (empty($_POST["work_id"][$i]))
                 {
-                    query("INSERT INTO work_exp (user_id, company, position, start_date, end_date) VALUES(?, ?, ?, ?, ?)"
-                    , $id
-                    , $_POST["company"][$i]
-                    , $_POST["position"][$i]
-                    , $_POST["start_date"][$i]
-                    , $_POST["end_date"][$i]);           
+                    query("INSERT INTO work_exp (user_id, company, position, start_date, end_date) VALUES(?, ?, ?, ?, ?)" , 
+                    $id,
+                    $_POST["company"][$i],
+                    $_POST["position"][$i],
+                    $_POST["start_date"][$i],
+                    $_POST["end_date"][$i]);           
                 }
                 
                 //if the skill already exists, update it
                 else
                 {
-                    query("update work_exp set company = ?, position = ?, start_date = ?, end_date = ? where id = ?"
-                    , $_POST["company"][$i]
-                    , $_POST["position"][$i]
-                    , $_POST["start_date"][$i]
-                    , $_POST["end_date"][$i]);
+                    query("update work_exp set company = ?, position = ?, start_date = ?, end_date = ? where user_id = ?",                    
+                    $_POST["company"][$i],
+                    $_POST["position"][$i],
+                    $_POST["start_date"][$i],
+                    $_POST["end_date"][$i],
+                    $id);  
                 }           
               
            }
         }       
-        redirect("/workexp.php");  
+       // redirect("/workexp.php");  
     
     }       
     

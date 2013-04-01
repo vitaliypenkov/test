@@ -96,8 +96,7 @@ $(document).ready(function() {
     var position = ("<th><input name=\"position[]\" placeholder=\"Please specify position\" type=\"text\"/\></th>"); 
     var start_date =  ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/\></th>");                                                        
     var end_date = ("<th><input name=\"end_date[]\" placeholder=\"Please specify end date\" type=\"text\"/\></th></tr>");        
-    $('#table tr:last').after(checkbox + company + position + start_date + end_date);
-      
+    $('#table tr:last').after(checkbox + company + position + start_date + end_date);      
   }); 
 });
 --></script>
