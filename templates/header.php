@@ -38,7 +38,7 @@
                 ?>  !<br/>
                  <?php } ?>
                
-                <a href="/"><img alt="CV Maker src="img/logo.png"/></a>
+                <a href="/"><img alt="CV Maker" src="img/logo.png"/></a>
             </div>
 
             <div id="middle">
