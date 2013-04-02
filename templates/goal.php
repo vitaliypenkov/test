@@ -26,7 +26,7 @@ Position:
  }
  else
  {  
-   print ("<input name=\"position\" maxlength=24 placeholder=\"Please specify position to apply to\" type=\"text\"/>");  
+   print ("<input name=\"position\" maxlength=24 placeholder=\"E.g.: Jr Java Developer\" type=\"text\"/>");  
    print("</div>");    
    print("Objective: ");
    print("<div>");
