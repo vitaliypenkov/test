@@ -28,8 +28,9 @@
             {
                 for ($i = 0; $i < $count; $i++)                
                 {                                       
-                    print ("<tr><th><div id=div$i class='control-group'>");
-                    print ("<input type='checkbox' id = \"sel$i\" name = \"{$wexps[$i]["id"]}\" /></div></th>");                  
+                    print ("<tr><th>");
+                    print ("<input type='checkbox' id = \"sel$i\" name = \"{$wexps[$i]["id"]}\"/>");    
+                    print ("<input id=\"id$i\" maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
                     print ("<th><input name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"position[]\" value=\"{$wexps[$i]["position"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"start_date[]\" value=\"{$wexps[$i]["start_date"]}\" type=\"text\"/></th>");                                                        
@@ -76,7 +77,7 @@ $(document).ready(function() {
         });
    
        $.ajax({
-       url: 'skills.php',
+       url: 'workexp.php',
        type: 'POST',
        data: {
             del: dels

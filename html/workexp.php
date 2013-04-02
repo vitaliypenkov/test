@@ -24,7 +24,7 @@
        {
           for ($i = 0; $i<count($_POST["del"]); $i++)
           {            
-            query("delete from skills where id =?", $_POST["del"][$i]);                
+            query("delete from work_exp where id =?", $_POST["del"][$i]);                
           }
        }
        else
@@ -46,17 +46,17 @@
                 //if the skill already exists, update it
                 else
                 {
-                    query("update work_exp set company = ?, position = ?, start_date = ?, end_date = ? where user_id = ?",                    
+                    query("update work_exp set company = ?, position = ?, start_date = ?, end_date = ? where id = ?",                    
                     $_POST["company"][$i],
                     $_POST["position"][$i],
                     $_POST["start_date"][$i],
                     $_POST["end_date"][$i],
-                    $id);  
+                    $_POST["work_id"][$i]);  
                 }           
               
            }
         }       
-       // redirect("/workexp.php");  
+       redirect("/workexp.php");  
     
     }       
     
