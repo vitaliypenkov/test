@@ -5,4 +5,4 @@ CREATE TABLE  `cv`.`goal` (
 `objective` VARCHAR( 255 ) NULL ,
 UNIQUE (
 `user_id`
-);
+))
