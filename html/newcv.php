@@ -33,8 +33,10 @@
             echo "Please enter symbol";
         }         
          
-        query("update personal_info set fname = ?, lname = ?, mname = ? where user_id = ?", $_POST["fname"],$_POST["lname"], $_POST["mname"], $id); 
-        redirect("/");
+        $result = query("update personal_info set fname = ?, lname = ?, mname = ? where user_id = ?", $_POST["fname"],$_POST["lname"], $_POST["mname"], $id); 
+        
+        verifyResult ($result);
+        redirect("/newcv.php");
     }   
     else
     {

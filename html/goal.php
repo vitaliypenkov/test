@@ -16,8 +16,11 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {  
                   
-        query("INSERT INTO goal (user_id, position, objective) VALUES(?, ?, ?) ON DUPLICATE KEY UPDATE position = VALUES (position), objective = VALUES (objective) ",
+        $result = query("INSERT INTO goal (user_id, position, objective) VALUES(?, ?, ?) ON DUPLICATE KEY UPDATE position = VALUES (position), objective = VALUES (objective) ",
         $id, $_POST["position"], $_POST["objective"] );
+        
+        verifyResult ($result);
+        
         redirect("/goal.php");  
     
     }    

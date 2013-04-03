@@ -8,11 +8,11 @@
     foreach ($rows as $row)
     {  
         $edu[] = [
-            "qalification" => $row["qalification"],
+            "qualification" => $row["qualification"],
             "institution" => $row["institution"],
             "start_date" => $row["start_date"],
             "end_date" => $row["end_date"],                        
-            "id" => $row["id"]          
+            "edu_id" => $row["id"]          
             ];
     }
      
@@ -24,47 +24,52 @@
        {
           for ($i = 0; $i<count($_POST["del"]); $i++)
           {            
-            query("delete from work_exp where id =?", $_POST["del"][$i]);                
+            query("delete from education where id =?", $_POST["del"][$i]);                
           }
        }
        else
        {  
-           var_dump($_POST);     
-           for ($i = 0; $i<count($_POST["company"]); $i++)
+            
+           
+          // var_dump($_SESSION);     
+           for ($i = 0; $i<count($_POST["institution"]); $i++)
            {
                 //if the skill is new, insert entered data
-                if (empty($_POST["work_id"][$i]))
+                if (empty($_POST["edu_id"][$i]))
                 {
-                    query("INSERT INTO work_exp (user_id, company, position, start_date, end_date) VALUES(?, ?, ?, ?, ?)" , 
+                    $result = query("INSERT INTO education (user_id, qualification, institution, start_date, end_date) VALUES(?, ?, ?, ?, ?)" , 
                     $id,
-                    $_POST["company"][$i],
-                    $_POST["position"][$i],
+                    $_POST["qualification"][$i],
+                    $_POST["institution"][$i],
                     $_POST["start_date"][$i],
-                    $_POST["end_date"][$i]);           
+                    $_POST["end_date"][$i]); 
+                    
+                    verifyResult ($result);
                 }
                 
                 //if the skill already exists, update it
                 else
                 {
-                    query("update work_exp set company = ?, position = ?, start_date = ?, end_date = ? where id = ?",                    
-                    $_POST["company"][$i],
-                    $_POST["position"][$i],
+                    $result = query("update education set qualification = ?, institution = ?, start_date = ?, end_date = ? where id = ?",                    
+                    $_POST["qualification"][$i],
+                    $_POST["institution"][$i],
                     $_POST["start_date"][$i],
                     $_POST["end_date"][$i],
-                    $_POST["work_id"][$i]);  
+                    $_POST["edu_id"][$i]);  
+                    
+                    verifyResult ($result);                    
                 }           
               
            }
         }       
-       redirect("/workexp.php");  
+       redirect("/education.php");  
     
     }       
     
        else
     {        
       render("education.php", ["edu" => $edu , "title" => "Education"]);
-    }
-    
+    }    
 
 ?>
  

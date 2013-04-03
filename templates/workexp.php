@@ -28,10 +28,10 @@
             {
                 for ($i = 0; $i < $count; $i++)                
                 {                                       
-                    print ("<tr><th>");
-                    print ("<input type='checkbox' id = \"sel$i\" name = \"{$wexps[$i]["id"]}\"/>");    
-                    print ("<input id=\"id$i\" maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
-                    print ("<th><input name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
+                    echo ("<tr><th>");
+                    echo ("<input type='checkbox' id = \"sel$i\" name = \"{$wexps[$i]["id"]}\"/>");    
+                    echo ("<input id=\"id$i\" maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
+                    echo ("<th><input name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"position[]\" value=\"{$wexps[$i]["position"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"start_date[]\" value=\"{$wexps[$i]["start_date"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"end_date[]\" value=\"{$wexps[$i]["end_date"]}\" type=\"text\"/></th>");                                                                                                
@@ -57,10 +57,27 @@
         <button type="button" id="add" class="btn">Add More</button>
         <button type="submit" class="btn">Save</button>
     </div>
+    
+    <?php  
+      
+        if($_SESSION["status"] == 1)
+        {
+            echo ("<div class = info>");
+            echo ("Data saved successfully");        
+            echo ("</div>");  
+            $_SESSION["status"] = 0;  
+        } 
+           
+        if($_SESSION["status"] == -1)
+        {
+            echo ("<div class = \"info\">");
+            echo ("An error occured please try again");        
+            echo ("</div>"); 
+            $_SESSION["status"] = 0;   
+        }        
+    ?>
 
 </form>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>

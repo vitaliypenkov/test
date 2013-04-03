@@ -49,6 +49,25 @@
             
         </div>
     </fieldset>
+    
+     <?php  
+      
+        if($_SESSION["status"] == 1)
+        {
+            echo ("<div class = info>");
+            echo ("Data saved successfully");        
+            echo ("</div>");  
+            $_SESSION["status"] = 0;  
+        } 
+           
+        if($_SESSION["status"] == -1)
+        {
+            echo ("<div class = \"info\">");
+            echo ("An error occured please try again");        
+            echo ("</div>"); 
+            $_SESSION["status"] = 0;   
+        }        
+    ?>
 </form>
 
 

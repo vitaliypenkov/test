@@ -81,6 +81,26 @@
             <button type="submit" class="btn">Save</button>
         </div>
     </fieldset>
+    
+     <?php  
+      
+        if($_SESSION["status"] == 1)
+        {
+            echo ("<div class = info>");
+            echo ("Data saved successfully");        
+            echo ("</div>");  
+            $_SESSION["status"] = 0;  
+        } 
+           
+        if($_SESSION["status"] == -1)
+        {
+            echo ("<div class = \"info\">");
+            echo ("An error occured please try again");        
+            echo ("</div>"); 
+            $_SESSION["status"] = 0;   
+        }        
+    ?>
+    
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>

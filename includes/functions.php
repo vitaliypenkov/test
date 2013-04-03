@@ -21,6 +21,20 @@
         require("../templates/dump.php");
         exit;
     }
+    
+    function verifyResult ($result)
+    {
+        if ($result === false)
+        {
+            $_SESSION["status"] = -1;
+            
+        }
+        else
+        {
+            $_SESSION["status"] = 1;
+            
+        } 
+    }
 
     /**
      * Logs out current user, if any.  Based on Example #1 at

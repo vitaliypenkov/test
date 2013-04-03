@@ -32,13 +32,17 @@
                 //if the skill is new, insert entered data
                 if (empty($_POST["skill_id"][$i]))
                 {
-                    query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $_POST["skill_name"][$i], $_POST["skill_exp"][$i]);           
+                     $result = query("INSERT INTO skills (user_id, skill, exp) VALUES(?, ?, ?)", $id, $_POST["skill_name"][$i], $_POST["skill_exp"][$i]); 
+                      
+                     verifyResult ($result);         
                 }
                 
                 //if the skill already exists, update it
                 else
                 {
-                    query("update skills set skill = ?, exp = ? where id = ?", $_POST["skill_name"][$i], $_POST["skill_exp"][$i], $_POST["skill_id"][$i]);
+                     $result = query("update skills set skill = ?, exp = ? where id = ?", $_POST["skill_name"][$i], $_POST["skill_exp"][$i], $_POST["skill_id"][$i]);
+                     
+                     verifyResult ($result);
                 }           
               
            }
