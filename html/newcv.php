@@ -11,29 +11,19 @@
         $details[] = [
             "fname" => $row["fname"],
             "lname" => $row["lname"],
-            "mname" => $row["mname"]            
+            "mname" => $row["mname"],
+            "email" => $row["email"], 
+            "phone1" => $row["phone1"], 
+            "phone2" => $row["phone2"]         
             ];
     }
      
     
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {            
-        if (empty($_POST["fname"]))
-        {
-            echo "Please enter symbol";
-        } 
-        
-        if (empty($_POST["lname"]))
-        {
-            echo "Please enter symbol";
-        } 
-        
-        if (empty($_POST["mname"]))
-        {
-            echo "Please enter symbol";
-        }         
-         
-        $result = query("update personal_info set fname = ?, lname = ?, mname = ? where user_id = ?", $_POST["fname"],$_POST["lname"], $_POST["mname"], $id); 
+                 
+        $result = query("update personal_info set fname = ?, lname = ?, mname = ?, email = ?, phone1 = ?, phone2 = ? where user_id = ?",
+        $_POST["fname"],$_POST["lname"], $_POST["mname"], $_POST["email"], $_POST["phone1"], $_POST["phone2"], $id); 
         
         verifyResult ($result);
         redirect("/newcv.php");

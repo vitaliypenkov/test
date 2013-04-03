@@ -70,7 +70,7 @@
            
         if($_SESSION["status"] == -1)
         {
-            echo ("<div class = info>");
+            echo ("<div class = error>");
             echo ("An error occured please try again");        
             echo ("</div>"); 
             $_SESSION["status"] = 0;   

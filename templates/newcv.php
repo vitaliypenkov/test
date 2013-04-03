@@ -8,46 +8,19 @@
 </ul>
 <form action="newcv.php" method="post">
     <fieldset>
-        <div>
-            
+
+        <div class="control-group">    
+            <input name='fname' <?php $details[0]["fname"] == NULL ? print "placeholder=\"First Name\"" : print "value=\"{$details[0]["fname"]}\"" ?> type='text'/>
+            <input name='lname' <?php $details[0]["lname"] == NULL ? print "placeholder=\"Last Name\"" : print "value=\"{$details[0]["lname"]}\"" ?>  type='text'/>
+            <input name='mname' <?php $details[0]["mname"] == NULL ? print "placeholder=\"Middle Name\"" : print "value=\"{$details[0]["mname"]}\"" ?>  type='text'/>
+            <input name='email' <?php $details[0]["email"] == NULL ? print "placeholder=\"E-Mail\"" : print "value=\"{$details[0]["email"]}\"" ?>  type='text'/>
+            <input name='phone1' <?php $details[0]["phone1"] == NULL ? print "placeholder=\"Phone Number\"" : print "value=\"{$details[0]["phone1"]}\"" ?>  type='text'/>
+            <input name='phone2' <?php $details[0]["phone2"] == NULL ? print "placeholder=\"Phone Number\"" : print "value=\"{$details[0]["phone2"]}\"" ?>  type='text'/>                        
         </div>
-        <div class="control-group">  
-        <?php
-            if ($details[0]["fname"] == NULL)
-            {
-                print ("<input name='fname' placeholder='First Name' type='text'/>");
-            }
-            else
-            {
-                print ("<input name='fname' value=" . $details[0]["fname"] ." type='text'/>");
-            }        
-            if ($details[0]["lname"] == NULL)
-            {
-                print ("<input name='lname' placeholder='Last Name' type='text'/>");
-            }
-            else
-            {
-                print ("<input name='lname' value=" . $details[0]["lname"] ." type='text'/>");
-            }
         
-            if ($details[0]["mname"] == NULL)
-            {
-                print ("<input name='mname' placeholder='Middle Name' type='text'/>");
-            }
-            else
-            {
-                print ("<input name='mname' value=" . $details[0]["mname"] ." type='text'/>");
-            }
-        ?>  
-                
-        </div>
-        <div class="control-group">        
-          <!--  <button type="button" class="btn">Back</button>  -->         
+        <div class="control-group">     
             <button type="submit" class="btn">Save</button>
-        </div>
-        <div class="control-group">
-            
-        </div>
+        </div>        
     </fieldset>
     
      <?php  
@@ -62,7 +35,7 @@
            
         if($_SESSION["status"] == -1)
         {
-            echo ("<div class = \"info\">");
+            echo ("<div class = \"error\">");
             echo ("An error occured please try again");        
             echo ("</div>"); 
             $_SESSION["status"] = 0;   
