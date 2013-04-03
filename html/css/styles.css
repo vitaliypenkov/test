@@ -12,7 +12,7 @@ html, body {
 }
 
 .container-fluid {
-  width: 900px;    
+  width: 1000px;    
   height: 100%;
   margin: auto;
   background-color: #DDD;
@@ -24,9 +24,15 @@ html, body {
 
 .nav-tabs > li,
 .nav-pills > li {
-  width: 150px;
+  width: 160px;
   float: left;
+  margin: 10px 3px;
+}
 
+.log-name
+{
+    float: right;
+    padding: 5px;
 }
 
 .container
@@ -57,7 +63,7 @@ html, body {
     
     position: fixed; /* Фиксированное положение */
     bottom: 0; /* Левый нижний угол */
-    width: 900px; /* Ширина слоя */
+    width: 1000px; /* Ширина слоя */
 
     /* surround with whitespace */
 

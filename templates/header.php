@@ -29,13 +29,15 @@
             if (!empty($_SESSION["id"]))
             { 
             ?>
-            Welcome back,
-                <?php
+            <div class="log-name">Greetings, 
+                <b><?php
                  $id =  $_SESSION["id"]; 
                  $rows = query("SELECT username from users where id = ?" , $id);                 
                  $name = $rows[0]["username"];
                  echo $name;                 
-                ?>  !<br/>
+                ?></b> ! 
+                <a class="nav nav-pills" href="logout.php">Log Out</a>
+                </div>
                  <?php } ?>
                
                 <a href="/"><img alt="CV Maker" src="img/logo.png"/></a>
