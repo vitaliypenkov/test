@@ -4,7 +4,8 @@
     <li><a href="education.php">Education</a></li>
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php">Skills</a></li>
-    <li><a href="newcv.php">Get Resume</a></li> 
+    <li><a href="projects.php">Projects</a></li>    
+    <li><a href="/">Get Resume</a></li> 
 </ul>
 <form action="info.php" method="post">
     <fieldset>

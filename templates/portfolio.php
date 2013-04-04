@@ -5,6 +5,7 @@
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php">Skills</a></li>    
     <li><a href="projects.php">Projects</a></li>
+    <li><a href="/">Get Resume</a></li>     
 </ul>
 
 <div class="view header-name">
@@ -22,7 +23,7 @@ E-mail:
 <a href="mailto:<? echo $info[0]["email"] ?>?Subject=<? echo $info[0]["fname"]?> <? echo $info[0]["lname"]?>, <? echo $goal[0]["position"]?>: Interview Request">
 <? echo $info[0]["email"] ?></a>
 <p> 
-Phone: <? echo $info[0]["phone1"] ?>  
+Address: <? echo $info[0]["phone1"] ?>  
 <p> 
 Phone: <? echo $info[0]["phone2"] ?>  
 <div>

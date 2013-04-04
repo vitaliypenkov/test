@@ -5,6 +5,7 @@
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php">Skills</a></li>
     <li><a href="projects.php">Projects</a></li>      
+    <li><a href="/">Get Resume</a></li>     
 </ul>
 
 <form action="education.php" method="post">
