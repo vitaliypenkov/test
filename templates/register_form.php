@@ -1,4 +1,5 @@
 <form action="register.php" method="post">
+    <br/>
     <fieldset>
         <div class="control-group">
             <input autofocus name="username" placeholder="Username" type="text"/>

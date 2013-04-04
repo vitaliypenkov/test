@@ -7,7 +7,6 @@
     <li><a href="projects.php">Projects</a></li>
 </ul>
 
-
 <form action="goal.php" method="post">
 
 <div>

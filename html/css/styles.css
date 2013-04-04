@@ -7,7 +7,7 @@
  * Global CSS.
  ***************************************************************************/
 html, body {
-  background-color: #333;
+  background-color: #444;
   height: 100%;
 }
 
@@ -16,6 +16,24 @@ html, body {
   height: 100%;
   margin: auto;
   background-color: #DDD;
+}
+
+.info, .error {
+  font-weight: bold;
+}
+
+.control-group > input {
+  width: 310px;
+
+}
+
+.title-group {
+  margin: 5px;
+  padding: 7px;
+  text-align: left;
+  font-weight: bold;
+  float: left;
+  width: 304px;
 }
 
 .nav nav-pills {
