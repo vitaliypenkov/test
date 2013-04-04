@@ -1,10 +1,10 @@
 <ul class="nav nav-pills">
-    <li><a href="newcv.php">Personal Info</a></li>
+    <li><a href="info.php">Personal Info</a></li>
     <li><a href="goal.php"><strong>Goal</strong></a></li>
     <li><a href="education.php">Education</a></li>
     <li><a href="workexp.php">Work Experience</a></li>
-    <li><a href="skills.php">Skills</a></li>    
-    <li><a href="logout.php">Log Out</a></li>
+    <li><a href="skills.php">Skills</a></li>  
+    <li><a href="projects.php">Projects</a></li>
 </ul>
 
 
@@ -13,7 +13,6 @@
 <div>
 Position:
 <?php 
-
 
  if (!empty($goal[0]))
  {
@@ -39,21 +38,25 @@ Position:
     </div>
     
      <?php  
-      
-        if($_SESSION["status"] == 1)
-        {
-            echo ("<div class = info>");
-            echo ("Data saved successfully");        
-            echo ("</div>");  
-            $_SESSION["status"] = 0;  
-        } 
-           
-        if($_SESSION["status"] == -1)
-        {
-            echo ("<div class = \"error\">");
-            echo ("An error occured please try again");        
-            echo ("</div>"); 
-            $_SESSION["status"] = 0;   
-        }        
+     
+        if(!empty($_SESSION["status"]))
+        {      
+            if($_SESSION["status"] == 1)
+            {
+                echo ("<div class = info>");
+                echo ("Data saved successfully");        
+                echo ("</div>");  
+                $_SESSION["status"] = 0;  
+            } 
+               
+            if($_SESSION["status"] == -1)
+            {
+                echo ("<div class = \"error\">");
+                echo ("An error occured please try again");        
+                echo ("</div>"); 
+                $_SESSION["status"] = 0;   
+            }  
+        }            
+   
     ?>
 </form>

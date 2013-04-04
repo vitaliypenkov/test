@@ -2,56 +2,47 @@
     <li><a href="info.php">Personal Info</a></li>
     <li><a href="goal.php">Goal</a></li>
     <li><a href="education.php">Education</a></li>
-    <li><a href="workexp.php"><strong>Work Experience</strong></a></li>
-    <li><a href="skills.php">Skills</a></li> 
-    <li><a href="projects.php">Projects</a></li>  
+    <li><a href="workexp.php">Work Experience</a></li>
+    <li><a href="skills.php">Skills</a></li>  
+    <li><a href="projects.php"><strong>Projects</strong></a></li>
 </ul>
 
+<form action="projects.php" method="post">
 
-<form action="workexp.php" method="post">
 
-    <table id="table" class="table table-bordered">
-    
-    <?php    
-        print("<tr>");
-        print("<th>Delete?</th>");
-        print("<th>Company</th>");
-        print("<th>Position</th>");
-        print("<th>Start date</th>");
-        print("<th>End date</th>");
-        print("</tr>");
+<fieldset>
+<?php
 
-            $count = count($wexps);         
-              
-            //if any skill found, display prepopulated fields             
-            if (!empty($wexps[0]))
-            {
-                for ($i = 0; $i < $count; $i++)                
-                {                                       
-                    echo ("<tr><th>");
-                    echo ("<input type='checkbox' name = \"{$wexps[$i]["id"]}\"/>");    
-                    echo ("<input maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
+    if (!empty($projects[0]))
+    {
+        for ($i = 0; $i < $count; $i++)                
+        {                                       
+            echo ("<input type='checkbox' name = \"{$projects[$i]["project_id"]}\"/>");    
+            /*        echo ("<input id=\"id$i\" maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
                     echo ("<th><input name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"position[]\" value=\"{$wexps[$i]["position"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"start_date[]\" value=\"{$wexps[$i]["start_date"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"end_date[]\" value=\"{$wexps[$i]["end_date"]}\" type=\"text\"/></th>");                                                                                                
                     print ("<tr>");
-                }
-            }
-            else
-            {            
-                    print ("<tr><th>");
-                    print ("<input type='checkbox'/></th>");                  
-                    print ("<th><input name=\"company[]\" placeholder=\"Please specify company\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"position[]\" placeholder=\"Please specify position\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"end_date[]\" placeholder=\"Please specify end date\" type=\"text\"/></th>");                                                                                                
-                    print ("<tr>");
+                }*/
+        }
+    }       
+    else
+    {            
+                   
+        echo ("<input type='checkbox'/>"); 
+        echo ("<input name=\"name[]\" placeholder=\"Please specify company\" type=\"text\"/>"); 
+        echo ("<input name=\"workload[]\" placeholder=\"Please specify company\" type=\"text\"/>");
+        echo ("<input name=\"responsibilities[]\" placeholder=\"Please specify company\" type=\"text\"/>");
+        echo ("<input name=\"role[]\" placeholder=\"Please specify company\" type=\"text\"/>");
+        echo ("<input name=\"technologies[]\" placeholder=\"Please specify company\" type=\"text\"/>");             
              
-             
-            }
-    ?>
-    </table>
+    }
+    
+?>
+
+</fieldset>
+
     <div class="control-group">  
         <button type="button" id="del" class="btn">Delete Selected</button>
         <button type="button" id="add" class="btn">Add More</button>
@@ -82,6 +73,7 @@
 
 </form>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
 <!--
@@ -97,7 +89,7 @@ $(document).ready(function() {
         });
    
        $.ajax({
-       url: 'workexp.php',
+       url: 'projects.php',
        type: 'POST',
        data: {
             del: dels

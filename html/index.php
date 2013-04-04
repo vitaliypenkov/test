@@ -1,24 +1,59 @@
 <?php
     
-    require("../includes/config.php");   
+    require("../includes/config.php"); 
+  
+    $id  = $_SESSION["id"]; 
     
-    $positions = [];
-    $id  = $_SESSION["id"];
-    
-    $rows = query("select * from portfolio where id = ?", $id);
+    $rows = query("select * from personal_info where user_id = ?", $id);
+    $info = [];
     foreach ($rows as $row)
-    {
-        $stock = lookup($row["symbol"]);
-        if ($stock !== false)
-        {
-            $positions[] = [
-            "name" => $stock["name"],
-            "price" => $stock["price"],
-            "shares" => $row["shares"],
-            "symbol" => $row["symbol"]
+    {  
+        $info[] = [
+            "fname" => $row["fname"],
+            "lname" => $row["lname"],
+            "mname" => $row["mname"],
+            "email" => $row["email"], 
+            "phone1" => $row["phone1"], 
+            "phone2" => $row["phone2"]         
             ];
-        }
+    }   
+    
+    $rows = query("select * from goal where user_id = ?", $id);
+    $goal = []; 
+    foreach ($rows as $row)
+    {  
+        $goal[] = [
+            "position" => $row["position"],
+            "objective" => $row["objective"]
+            ];
+    } 
+    
+    $rows = query("select * from work_exp where user_id = ?", $id);
+    $wexps = []; 
+    foreach ($rows as $row)
+    {  
+        $wexps[] = [
+            "company" => $row["company"],
+            "position" => $row["position"],
+            "start_date" => $row["start_date"],
+            "end_date" => $row["end_date"],                        
+            "id" => $row["id"]          
+            ];
     }
-    render("portfolio.php", ["positions" => $positions, "title" => "Portfolio"]);
+    
+    $rows = query("select * from education where user_id = ?", $id);
+    $edu = []; 
+    foreach ($rows as $row)
+    {  
+        $edu[] = [
+            "qualification" => $row["qualification"],
+            "institution" => $row["institution"],
+            "start_date" => $row["start_date"],
+            "end_date" => $row["end_date"],                        
+            "edu_id" => $row["id"]          
+            ];
+    }
+    
+    render("portfolio.php", ["edu" => $edu, "wexps" => $wexps, "goal" => $goal, "info" => $info, "title" => "Personal Info"]);
 
 ?>
