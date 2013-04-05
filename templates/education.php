@@ -5,7 +5,7 @@
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php">Skills</a></li>
     <li><a href="projects.php">Projects</a></li>      
-    <li><a href="/">Get Resume</a></li>     
+    <li><a href="javascript:;"  onClick="window.open('view.php<? echo "?user_id=", $_SESSION["id"]?>','no','scrollbars=yes,width=1250,height=768')" >View Resume</a>  </li>    
 </ul>
 
 <form action="education.php" method="post">
@@ -30,7 +30,7 @@
                 for ($i = 0; $i < $count; $i++)                
                 {                                       
                     print ("<tr><th>");
-                    print ("<input type='checkbox' name = \"{$edu[$i]["edu_id"]}\"/>");    
+                    print ("<input class =\"delete_box\" type='checkbox' name = \"{$edu[$i]["edu_id"]}\"/>");    
                     print ("<input id=\"id$i\" maxlength=5 name=\"edu_id[]\" value=\"{$edu[$i]["edu_id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
                     print ("<th><input name=\"institution[]\" value=\"{$edu[$i]["institution"]}\" type=\"text\"/></th>");                                                        
                     print ("<th><input name=\"qualification[]\" value=\"{$edu[$i]["qualification"]}\" type=\"text\"/></th>");                                                        
@@ -42,11 +42,11 @@
             else
             {            
                     print ("<tr><th>");
-                    print ("<input type='checkbox'/></th>");                  
-                    print ("<th><input name=\"institution[]\" placeholder=\"Please specify company\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"qualification[]\" placeholder=\"Please specify position\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"end_date[]\" placeholder=\"Please specify end date\" type=\"text\"/></th>");                                                                                                
+                    print ("<input class =\"delete_box\" type='checkbox'/></th>");                  
+                    print ("<th><input name=\"institution[]\" type=\"text\"/></th>");                                                        
+                    print ("<th><input name=\"qualification[]\" type=\"text\"/></th>");                                                        
+                    print ("<th><input name=\"start_date[]\" type=\"text\"/></th>");                                                        
+                    print ("<th><input name=\"end_date[]\" type=\"text\"/></th>");                                                                                                
                     print ("<tr>");             
             }
             
@@ -114,11 +114,11 @@ $(document).ready(function() {
   // now we use the new added button, when is clicked
   $('#add').click(function() 
   {  
-    var checkbox = ('<tr><th><input type=\"checkbox\"/\></th>');
-    var company = ('<th><input name=\"institution[]\" placeholder=\"Please specify institution name\" type=\"text\"/\></th>');
-    var position = ("<th><input name=\"qualification[]\" placeholder=\"Please specify qualification gained\" type=\"text\"/\></th>"); 
-    var start_date =  ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/\></th>");                                                        
-    var end_date = ("<th><input name=\"end_date[]\" placeholder=\"Please specify end date\" type=\"text\"/\></th></tr>");        
+    var checkbox = ('<tr><th><input class =\"delete_box\" type=\"checkbox\"/\></th>');
+    var company = ('<th><input name=\"institution[]\" type=\"text\"/\></th>');
+    var position = ("<th><input name=\"qualification[]\" type=\"text\"/\></th>"); 
+    var start_date =  ("<th><input name=\"start_date[]\" type=\"text\"/\></th>");                                                        
+    var end_date = ("<th><input name=\"end_date[]\" type=\"text\"/\></th></tr>");        
     $('#table tr:last').after(checkbox + company + position + start_date + end_date);      
   }); 
 });

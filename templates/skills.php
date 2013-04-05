@@ -5,7 +5,7 @@
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php"><strong>Skills</strong></a></li>
     <li><a href="projects.php">Projects</a></li>
-    <li><a href="/">Get Resume</a></li>     
+    <li><a href="javascript:;"  onClick="window.open('view.php<? echo "?user_id=", $_SESSION["id"]?>','no','scrollbars=yes,width=1250,height=768')" >View Resume</a>  </li>    
 </ul>
 
 <form action="skills.php" method="post">

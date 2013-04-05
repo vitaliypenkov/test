@@ -5,7 +5,7 @@
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php">Skills</a></li>  
     <li><a href="projects.php"><strong>Projects</strong></a></li>
-    <li><a href="/">Get Resume</a></li>     
+    <li><a href="javascript:;"  onClick="window.open('view.php<? echo "?user_id=", $_SESSION["id"]?>','no','scrollbars=yes,width=1250,height=768')" >View Resume</a>  </li>
 </ul>
 
 <form action="projects.php" method="post">
@@ -32,11 +32,11 @@
     {            
                    
         echo ("<input type='checkbox'/>"); 
-        echo ("<input name=\"name[]\" placeholder=\"Please specify company\" type=\"text\"/>"); 
-        echo ("<input name=\"workload[]\" placeholder=\"Please specify company\" type=\"text\"/>");
-        echo ("<input name=\"responsibilities[]\" placeholder=\"Please specify company\" type=\"text\"/>");
-        echo ("<input name=\"role[]\" placeholder=\"Please specify company\" type=\"text\"/>");
-        echo ("<input name=\"technologies[]\" placeholder=\"Please specify company\" type=\"text\"/>");             
+        echo ("<input name=\"name[]\" placeholder=\"name\" type=\"text\"/>"); 
+        echo ("<input name=\"role[]\" placeholder=\"role\" type=\"text\"/>");
+        echo ("<input name=\"workload[]\" placeholder=\"workload\" type=\"text\"/>");
+        echo ("<input name=\"responsibilities[]\" placeholder=\"responsibilities\" type=\"text\"/>");
+        echo ("<input name=\"technologies[]\" placeholder=\"technologies\" type=\"text\"/>");             
              
     }
     

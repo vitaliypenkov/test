@@ -11,15 +11,33 @@ html, body {
   height: 100%;
 }
 
-.container-fluid {
-  width: 1165px;    
-  height: 100%;
-  margin: auto;
-  background-color: #DDD;
+.log-name
+{
+    float: right;
+    padding: 5px;
 }
 
-.info, .error {
+.container-fluid {
+  width: 1165px;    
+  margin: auto;
+  height: 100%;    
+  background-color: #DDD;  
+  text-align: center;  
+}
+
+.info {
   font-weight: bold;
+  color: green;
+}
+
+.error {
+  font-weight: bold;
+  color: red;
+}
+
+#changes {
+  font-weight: bold;
+  color: blue;
 }
 
 .control-group > input {
@@ -50,51 +68,14 @@ html, body {
     text-align:center;
 }
 
+#table .delete_box {
+  position: relative;
+  margin-left: 20px;
+}
+
 .nav-tabs > li,
 .nav-pills > li {
   width: 160px;
   float: left;
   margin: 10px 3px;
-}
-
-.log-name
-{
-    float: right;
-    padding: 5px;
-}
-
-.container
-{
-    margin: auto;
-    text-align: center;
-}
-
-
-
-#top
-{
-    /* center contents */
-    text-align: center;
-}
-
-#middle
-{
-    /* center contents */
-    text-align: center;
-
-}
-
-#bottom
-{
-    /* shrink bottom's font size */
-    font-size: smaller;
-    
-    position: fixed; /* Фиксированное положение */
-    bottom: 0; /* Левый нижний угол */
-    width: 1165px; /* Ширина слоя */
-
-    /* surround with whitespace */
-
-    /* center contents */
-    text-align: center;
 }
