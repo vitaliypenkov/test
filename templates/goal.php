@@ -11,28 +11,27 @@
 <form action="goal.php" method="post">
 
 <div class="goal-group">
-<div class="title-group">Position</div>
+    <div class="title-group">Position</div>
 <?php 
 
  if (!empty($goal[0]))
  {
    print ("<input name=\"position\" maxlength=24 value =\"{$goal[0]["position"]}\" type=\"text\"/>");  
-   print("</div>");    
-   print("<div class=\"title-group\">Objective</div>");
+   print("<br/><br/><div class=\"title-group\">Objective</div>");
    print("<div>");
    print ("<textarea name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \">{$goal[0]["objective"]}</textarea>");   
- 
+   print("</div>"); 
  }
  else
  {  
-   print ("<input name=\"position\" maxlength=24 placeholder=\"E.g.: Jr Java Developer\" type=\"text\"/>");  
-   print("</div>");    
-   print("Objective: ");
+   print ("<input name=\"position\" maxlength=24 type=\"text\"/>");  
+   print("<br/><br/><div class=\"title-group\">Objective</div>");
    print("<div>");
    print ("<textarea name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \"> </textarea>");
+   print("</div>");    
  }
 ?>
-</div>
+</div>    
     <div class="control-group">             
         <button type="submit" class="btn">Save</button>
     </div>
