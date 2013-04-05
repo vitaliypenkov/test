@@ -24,8 +24,8 @@
                 {                       
                     print ("<div id=div$i class='control-group'>");
                     print ("<input type='checkbox' id = \"sel$i\" name = \"{$skills[$i]["id"]}\" />");                  
-                    print ("<input id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");                      
-                    print ("<select id =\"level$i\" name=\"skill_exp[]\">");
+                    print ("<input class=\"input\" id=\"skill$i\" name=\"skill_name[]\" value=\"{$skills[$i]["skill"]}\" type=\"text\"/>");                      
+                    print ("<select class=\"input\" id =\"level$i\" name=\"skill_exp[]\">");
                     print ("<option value='0'>Please Select</option>");                    
                     if ($skills[$i]["exp"]== 1)
                     {
@@ -64,8 +64,8 @@
             {
                     print ("<div id=div0 class='control-group'>");
                     print ("<input type='checkbox' id = sel0/>");
-                    print ("<input id=\"skill0\" name=\"skill_name[]\" placeholder=\"Please fill in technology\" type=\"text\"/>");  
-                    print ("<select id =\"level0\" name=\"skill_exp[]\">");   
+                    print ("<input class=\"input\" id=\"skill0\" name=\"skill_name[]\" placeholder=\"Please fill in technology\" type=\"text\"/>");  
+                    print ("<select class=\"input\" id =\"level0\" name=\"skill_exp[]\">");   
                     print ("<option value='0'>Please Select</option>");
                     print ("<option value='1'>Junior</option>");
                     print ("<option value='2'>Middle</option>");
@@ -79,7 +79,7 @@
         <div class="control-group">  
             <button type="button" id="del" class="btn">Delete Selected</button>
             <button type="button" id="add" class="btn">Add More</button>
-            <button type="submit" class="btn">Save</button>
+            <button id="save" type="submit" class="btn">Save</button>
         </div>
     </fieldset>
     
@@ -108,8 +108,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
 <!--
-$(document).ready(function() {
+$(document).ready(function() {    
     
+    $('.input').change(informAboutChanges);   
+
     $('#del').click(function() 
     {
         var dels = [];
@@ -128,7 +130,7 @@ $(document).ready(function() {
        success: function(response){
        window.location.reload();
        } 
-    }); 
+       }); 
     
     });
           

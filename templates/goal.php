@@ -16,15 +16,15 @@
 
  if (!empty($goal[0]))
  {
-   print ("<input name=\"position\" maxlength=24 value =\"{$goal[0]["position"]}\" type=\"text\"/>");  
+   print ("<input class=\"input\" name=\"position\" maxlength=24 value =\"{$goal[0]["position"]}\" type=\"text\"/>");  
    print("<br/><br/><div class=\"title-group\">Objective</div>");
    print("<div>");
-   print ("<textarea name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \">{$goal[0]["objective"]}</textarea>");   
+   print ("<textarea id=\"objective\" name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \">{$goal[0]["objective"]}</textarea>");   
    print("</div>"); 
  }
  else
  {  
-   print ("<input name=\"position\" maxlength=24 type=\"text\"/>");  
+   print ("<input class=\"input\" maxlength=24 type=\"text\"/>");  
    print("<br/><br/><div class=\"title-group\">Objective</div>");
    print("<div>");
    print ("<textarea name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \"> </textarea>");
@@ -33,7 +33,7 @@
 ?>
 </div>    
     <div class="control-group">             
-        <button type="submit" class="btn">Save</button>
+        <button id="save" type="submit" class="btn">Save</button>
     </div>
     
      <?php  
@@ -59,3 +59,12 @@
    
     ?>
 </form>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+<script>
+<!--
+$(document).ready(function()
+{       
+    $('.input').change(informAboutChanges);   
+});
+--></script>

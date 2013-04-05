@@ -4,33 +4,33 @@
     <li><a href="education.php">Education</a></li>
     <li><a href="workexp.php">Work Experience</a></li>
     <li><a href="skills.php">Skills</a></li>    
-    <li><a href="projects.php">Projects</a></li>
-    <li><a href="/">Get Resume</a></li>     
+    <li><a href="projects.php">Projects</a></li>    
+    <li><a href="javascript:;"  onClick="window.open('view.php<? echo "?user_id=", $_SESSION["id"]?>','no','scrollbars=yes,width=1250,height=768')" >View Resume</a>  </li>    
 </ul>
 
 <div class="view header-name">
 
 <h1>   
-<? echo $info[0]["fname"] ?>  
-<? echo $info[0]["lname"] ?> 
-<? echo $info[0]["mname"] ?> 
+<? if (!empty($info[0]["fname"])) echo $info[0]["fname"] ?>  
+<? if (!empty($info[0]["lname"])) echo $info[0]["lname"] ?> 
+<? if (!empty($info[0]["mname"])) echo $info[0]["mname"] ?> 
 </h1>
     
 <div>
 
 <div class="view header-contacts">
-E-mail: 
-<a href="mailto:<? echo $info[0]["email"] ?>?Subject=<? echo $info[0]["fname"]?> <? echo $info[0]["lname"]?>, <? echo $goal[0]["position"]?>: Interview Request">
-<? echo $info[0]["email"] ?></a>
+
+<a href="mailto:<? if (!empty($info[0]["email"])) echo "E-mail: ", $info[0]["email"] ?>?Subject=<? if (!empty($info[0]["fname"])) echo $info[0]["fname"]?> <? if (!empty($info[0]["lname"])) echo $info[0]["lname"]?>, <?if (!empty($goal[0]["position"])) echo $goal[0]["position"]?>: Interview Request">
+<? if (!empty($info[0]["email"])) echo $info[0]["email"] ?></a>
 <p> 
-Address: <? echo $info[0]["phone1"] ?>  
+ <? if (!empty($info[0]["phone1"])) echo "Phone: ", $info[0]["phone1"] ?>  
 <p> 
-Phone: <? echo $info[0]["phone2"] ?>  
+<? if (!empty($info[0]["phone2"])) echo "Phone: ", $info[0]["phone2"] ?>  
 <div>
 
 <div class="view objective">
-<h4>Position:</h4>   <? echo $goal[0]["position"] ?> 
-<h4>Objective:</h4>  <? echo $goal[0]["objective"] ?> 
+<h4>Position:</h4>   <? if (!empty($goal[0]["position"])) echo $goal[0]["position"]?> 
+<h4>Objective:</h4>  <? if (!empty($goal[0]["objective"])) echo $goal[0]["objective"] ?> 
 <div>
 
 <div class="view experience">
@@ -58,15 +58,13 @@ Phone: <? echo $info[0]["phone2"] ?>
     $count = count($edu);     
     for ($i = 0; $i < $count; $i++)                
     {    
-         echo "<br>";
-        echo "<b>Institution:</b> ", $edu[$i]["institution"];    
+        echo "<br>";
+        echo "<b>Institution:</b> ", $edu[$i]["institution"];   
         echo "<br>";
         echo "<b>Qualification:</b> ", $edu[$i]["qualification"] ;
         echo "<br>";
-        echo "<b>Dates of Studying:</b> ",$edu[$i]["start_date"], " - ", $edu[$i]["end_date"];          
-            
-        echo "<p>";
-        
+        echo "<b>Dates of Studying:</b> ", $edu[$i]["start_date"], " - ", $edu[$i]["end_date"];  
+        echo "<p>";        
      }
 ?>     
 

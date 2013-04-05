@@ -13,20 +13,20 @@
             <div class="title-group">First Name</div>
             <div class="title-group">Last Name</div>
             <div class="title-group">Middle Name</div>
-            <input name='fname' <?php $info[0]["fname"] == NULL ? print "" : print "value=\"{$info[0]["fname"]}\"" ?> type='text'/>
-            <input name='lname' <?php $info[0]["lname"] == NULL ? print "" : print "value=\"{$info[0]["lname"]}\"" ?>  type='text'/>
-            <input name='mname' <?php $info[0]["mname"] == NULL ? print "" : print "value=\"{$info[0]["mname"]}\"" ?>  type='text'/>
+            <input class="input" name='fname' <?php if (!empty($info[0]["fname"])) $info[0]["fname"] == NULL ? print "" : print "value=\"{$info[0]["fname"]}\"" ?> type='text'/>
+            <input class="input" name='lname' <?php if (!empty($info[0]["lname"])) $info[0]["lname"] == NULL ? print "" : print "value=\"{$info[0]["lname"]}\"" ?>  type='text'/>
+            <input class="input" name='mname' <?php if (!empty($info[0]["mname"])) $info[0]["mname"] == NULL ? print "" : print "value=\"{$info[0]["mname"]}\"" ?>  type='text'/>
             <br/><br/>
             <div class="title-group">E-mail</div>
             <div class="title-group">Address</div>
             <div class="title-group">Phone number</div>            
-            <input name='email' <?php $info[0]["email"] == NULL ? print "" : print "value=\"{$info[0]["email"]}\"" ?>  type='text'/>
-            <input name='phone1' <?php $info[0]["phone1"] == NULL ? print "" : print "value=\"{$info[0]["phone1"]}\"" ?>  type='text'/>
-            <input name='phone2' <?php $info[0]["phone2"] == NULL ? print "" : print "value=\"{$info[0]["phone2"]}\"" ?>  type='text'/>                        
+            <input class="input" name='email' <?php if (!empty($info[0]["email"])) $info[0]["email"] == NULL ? print "" : print "value=\"{$info[0]["email"]}\"" ?>  type='text'/>
+            <input class="input" name='phone1' <?php if (!empty($info[0]["phone1"])) $info[0]["phone1"] == NULL ? print "" : print "value=\"{$info[0]["phone1"]}\"" ?>  type='text'/>
+            <input class="input" name='phone2' <?php if (!empty($info[0]["phone2"])) $info[0]["phone2"] == NULL ? print "" : print "value=\"{$info[0]["phone2"]}\"" ?>  type='text'/>                        
         </div>
         
         <div class="control-group">     
-            <button type="submit" class="btn">Save</button>
+            <button id="save" type="submit" class="btn">Save</button>
         </div>        
     </fieldset>
     
@@ -53,5 +53,13 @@
  
     ?>
 </form>
+
+<script>
+<!--
+$(document).ready(function()
+{
+    $('.input').change(informAboutChanges);     
+});
+--></script>
 
 
