@@ -10,42 +10,62 @@
 
 <form action="projects.php" method="post">
 
-
 <fieldset>
 <?php
 
     if (!empty($projects[0]))
     {
+        $count = count($projects);        
         for ($i = 0; $i < $count; $i++)                
-        {                                       
-            echo ("<input type='checkbox' name = \"{$projects[$i]["project_id"]}\"/>");    
-            /*        echo ("<input id=\"id$i\" maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
-                    echo ("<th><input name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"position[]\" value=\"{$wexps[$i]["position"]}\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"start_date[]\" value=\"{$wexps[$i]["start_date"]}\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"end_date[]\" value=\"{$wexps[$i]["end_date"]}\" type=\"text\"/></th>");                                                                                                
-                    print ("<tr>");
-                }*/
+        {
+            echo ("<div id=\"pid$i\" class=\"div_project\">");
+                echo ("<div class=\"project-title div_project_left\">Project Name<br/>");
+                    echo ("<input class=\"input\" name=\"project_name[]\" value=\"{$projects[$i]["project_name"]}\" type=\"text\"/></div>");
+                        
+                echo ("<div class=\"project-title div_project_right\">Role<br/>");
+                    echo ("<input class=\"input\" name=\"role[]\" value=\"{$projects[$i]["role"]}\" type=\"text\"/></div>");
+
+                echo ("<div class=\"project-title div_project_left\">Project Description</div><br/>");
+                echo ("<textarea class= \"textarea\" name=\"workload[]\" >{$projects[$i]["workload"]}</textarea>");    
+            
+                echo ("<div class=\"project-title div_project_left\">Responsibilities</div><br/>");            
+                echo ("<textarea class= \"textarea\" name=\"responsibilities[]\" >{$projects[$i]["responsibilities"]}</textarea>");    
+            
+                echo ("<div class=\"project-title div_project_left\">Project Technologies</div><br/>");            
+                echo ("<textarea class= \"textarea\" name=\"technologies[]\" >{$projects[$i]["technologies"]}</textarea>");
+                
+                echo ("<button type=\"button\" name=\"{$projects[$i]["project_id"]}\" class=\"btn del\">Delete</button>");
+
+                echo ("<input maxlength=5 name=\"project_id[]\" value=\"{$projects[$i]["project_id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/>");            
+            echo ("</div>");                
+
         }
     }       
     else
-    {            
-                   
-        echo ("<input type='checkbox'/>"); 
-        echo ("<input name=\"name[]\" placeholder=\"name\" type=\"text\"/>"); 
-        echo ("<input name=\"role[]\" placeholder=\"role\" type=\"text\"/>");
-        echo ("<input name=\"workload[]\" placeholder=\"workload\" type=\"text\"/>");
-        echo ("<input name=\"responsibilities[]\" placeholder=\"responsibilities\" type=\"text\"/>");
-        echo ("<input name=\"technologies[]\" placeholder=\"technologies\" type=\"text\"/>");             
-             
+    {              
+         echo ("<div class=\"div_project\">");
+                echo ("<div class=\"project-title div_project_left\">Project Name<br/>");
+                    echo ("<input class=\"input\" name=\"project_name[]\" type=\"text\"/></div>");
+                        
+                echo ("<div class=\"project-title div_project_right\">Role<br/>");
+                    echo ("<input class=\"input\" name=\"role[]\" type=\"text\"/></div>");
+
+                echo ("<div class=\"project-title div_project_left\">Project Description</div><br/>");
+                echo ("<textarea class= \"textarea\" name=\"workload[]\" ></textarea>");    
+            
+                echo ("<div class=\"project-title div_project_left\">Responsibilities</div><br/>");            
+                echo ("<textarea class= \"textarea\" name=\"responsibilities[]\" ></textarea>");    
+            
+                echo ("<div class=\"project-title div_project_left\">Project Technologies</div><br/>");            
+                echo ("<textarea class= \"textarea\" name=\"technologies[]\" ></textarea>");                        
+            echo ("</div>");           
     }
     
 ?>
 
 </fieldset>
 
-    <div class="control-group">  
-        <button type="button" id="del" class="btn">Delete Selected</button>
+    <div class="control-group"> 
         <button type="button" id="add" class="btn">Add More</button>
         <button type="submit" class="btn">Save</button>
     </div>
@@ -74,26 +94,24 @@
 
 </form>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script>
 <!--
 $(document).ready(function() {
+
+    nicEditors.allTextAreas({buttonList : ['bold','italic','underline','strikeThrough', 'removeformat', 'indent', 'outdent', 
+    'left', 'center', 'right', 'justify', 'ol', 'ul', 'fontSize', 'fontFamily','fontFormat']})  
     
-    $('#del').click(function() 
+    $('.del').click(function() 
     {
-        var dels = [];
-        $("input:checked").each(function()
-        {
-            var code = $(this).attr('name');            
-            dels.push(code);
-        });
+        var del = $(this).attr('name'); 
    
        $.ajax({
        url: 'projects.php',
        type: 'POST',
        data: {
-            del: dels
+            del: del
        },
        success: function(response){
        window.location.reload();
@@ -105,12 +123,22 @@ $(document).ready(function() {
   // now we use the new added button, when is clicked
   $('#add').click(function() 
   {  
-    var checkbox = ('<tr><th><input type=\"checkbox\" id = \"sel0\"/\></th>');
-    var company = ('<th><input name=\"company[]\" placeholder=\"Please specify company\" type=\"text\"/\></th>');
-    var position = ("<th><input name=\"position[]\" placeholder=\"Please specify position\" type=\"text\"/\></th>"); 
-    var start_date =  ("<th><input name=\"start_date[]\" placeholder=\"Please specify start date\" type=\"text\"/\></th>");                                                        
-    var end_date = ("<th><input name=\"end_date[]\" placeholder=\"Please specify end date\" type=\"text\"/\></th></tr>");        
-    $('#table tr:last').after(checkbox + company + position + start_date + end_date);      
+  
+    var main_div = ('<div id=\"pid$i\" class=\"div_project\">');
+    var project_name1 = ('<div class=\"project-title div_project_left\">Project Name<br/\>'); 
+    var project_name2 = ('<input class=\"input\" name=\"project_name[]\" type=\"text\"/\></div>');           
+    var role1 = ('<div class=\"project-title div_project_right\">Role<br/\>'); 
+    var role2 = ('<input class=\"input\" name=\"role[]\" type=\"text\"/\></div>');                    
+    var descr1 = ('<div class=\"project-title div_project_left\">Project Description</div><br/\>'); 
+    var descr2 = ('<textarea class= \"textarea\" name=\"workload[]\" ></textarea>');                   
+    var k1 = ('<div class=\"project-title div_project_left\">Responsibilities</div><br/\>');
+    var k2 = ('<textarea class= \"textarea\" name=\"responsibilities[]\" ></textarea>');
+    var k3 = ('<div class=\"project-title div_project_left\">Project Technologies</div><br/\>');
+    var k4 = ('<textarea class= \"textarea\" name=\"technologies[]\" ></textarea></div>');       
+   
+    $('.div_project').after(main_div + project_name1 + project_name2 + role1 + role2 + descr1 +descr2 + k1 +k2 +k3 + k4);    
+    
+   
   }); 
 });
 --></script>

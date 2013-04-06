@@ -20,9 +20,20 @@ html, body {
 .container-fluid {
   width: 1165px;    
   margin: auto;
-  height: 100%;    
   background-color: #DDD;  
   text-align: center;  
+}
+
+#back {
+  height: 100%;
+  width: 1205px;    
+  margin: auto;
+  background-color: #DDD;  
+  text-align: center;    
+}
+
+.del {
+  margin-bottom: 50px;
 }
 
 .info {
@@ -35,9 +46,49 @@ html, body {
   color: red;
 }
 
+.nicEdit-main {  
+  margin: auto; 
+  background-color: white;
+}
+
+.textarea {
+  margin: 0px 0px 10px; 
+  width: 560px; 
+  height: 50px; 
+}
+
 #changes {
   font-weight: bold;
   color: blue;
+}
+
+.skills-table {
+  margin: auto;
+  width: 620px;
+}
+
+.div_project {
+  width: 560px;
+  margin: 20px auto;
+}
+
+.project-title > input {
+  width: 250px;
+}
+
+.div_project_left {
+  float: left;
+}
+
+.div_project_right {
+  float: right;
+}
+
+.project-title {
+  text-align: left;
+  font-weight: bold;
+  margin: 10px 0px;
+  
 }
 
 .control-group > input {
@@ -46,7 +97,7 @@ html, body {
 }
 
 .goal-group {
-  width: 590px;
+  width: 565px;
   margin: auto;
   text-align: center;
 }
@@ -78,4 +129,56 @@ html, body {
   width: 160px;
   float: left;
   margin: 10px 3px;
+}
+
+.view {
+  text-align: left;  
+  border-bottom: solid 1px gray; 
+}
+
+.a1 {   
+  border-bottom: solid 1px gray;
+  padding-bottom: 5px; 
+}
+
+#view_name {
+  font-weight: bold;
+  font-size: 32px;
+  padding: 20px;
+  text-align: center;  
+}
+
+#view_left {
+  width: 300px;
+  font-weight: bold;
+  font-size: 16px;
+  float: left;
+  padding-top: 10px;
+}
+
+#view_right {
+  padding-top: 10px;
+  font-size: 16px;
+  width: 600px;
+  
+  margin-left: 350px;
+  margin-bottom: 20px; 
+}
+
+#view_left1 {
+  width: 300px;
+  font-weight: bold;
+  font-size: 24px;
+  float: left;
+  padding-top: 10px;
+}
+
+#view_right1 {
+  padding-top: 10px;
+  font-size: 24px;
+  width: 600px;
+  
+  margin-left: 350px;
+  margin-top: 40px;
+  margin-bottom: 10px;    
 }

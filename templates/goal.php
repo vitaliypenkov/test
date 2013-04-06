@@ -19,7 +19,7 @@
    print ("<input class=\"input\" name=\"position\" maxlength=24 value =\"{$goal[0]["position"]}\" type=\"text\"/>");  
    print("<br/><br/><div class=\"title-group\">Objective</div>");
    print("<div>");
-   print ("<textarea id=\"objective\" name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \">{$goal[0]["objective"]}</textarea>");   
+   print ("<textarea class= \"textarea\" id=\"objective\" name=\"objective\" maxlength=250 \">{$goal[0]["objective"]}</textarea>");   
    print("</div>"); 
  }
  else
@@ -27,7 +27,7 @@
    print ("<input class=\"input\" maxlength=24 type=\"text\"/>");  
    print("<br/><br/><div class=\"title-group\">Objective</div>");
    print("<div>");
-   print ("<textarea name=\"objective\" maxlength=250 cols=\"20\" rows=\"5\" style=\"margin: 0px 0px 10px; width: 535px; height: 103px; \"> </textarea>");
+   print ("<textarea class= \"textarea\" name=\"objective\" maxlength=250 > </textarea>");
    print("</div>");    
  }
 ?>
@@ -65,6 +65,11 @@
 <!--
 $(document).ready(function()
 {       
-    $('.input').change(informAboutChanges);   
+   // $('.input').change(informAboutChanges);
+    $('.input').keyup(informAboutChanges);
+    $('#objective').keyup(informAboutChanges);
+    $('.textarea').keyup(informAboutChanges);
+    $('.nicEdit-selected').keyup(informAboutChanges); 
+    
 });
 --></script>

@@ -32,10 +32,10 @@
                     echo ("<tr><th>");
                     echo ("<input class =\"delete_box\" type='checkbox' name = \"{$wexps[$i]["id"]}\"/>");    
                     echo ("<input maxlength=5 name=\"work_id[]\" value=\"{$wexps[$i]["id"]}\" style=\"visibility:hidden; position:absolute\"  type=\"text\"/> </th>");                   
-                    echo ("<th><input name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"position[]\" value=\"{$wexps[$i]["position"]}\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"start_date[]\" value=\"{$wexps[$i]["start_date"]}\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"end_date[]\" value=\"{$wexps[$i]["end_date"]}\" type=\"text\"/></th>");                                                                                                
+                    echo ("<th><input class=\"input\" name=\"company[]\" value=\"{$wexps[$i]["company"]}\" type=\"text\"/></th>");                                                        
+                    print ("<th><input class=\"input\" name=\"position[]\" value=\"{$wexps[$i]["position"]}\" type=\"text\"/></th>");                                                        
+                    print ("<th><input class=\"input\" name=\"start_date[]\" value=\"{$wexps[$i]["start_date"]}\" type=\"text\"/></th>");                                                        
+                    print ("<th><input class=\"input\" name=\"end_date[]\" value=\"{$wexps[$i]["end_date"]}\" type=\"text\"/></th>");                                                                                                
                     print ("<tr>");
                 }
             }
@@ -43,10 +43,10 @@
             {            
                     print ("<tr><th>");
                     print ("<input class =\"delete_box\" type='checkbox'/></th>");                  
-                    print ("<th><input name=\"company[]\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"position[]\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"start_date[]\" type=\"text\"/></th>");                                                        
-                    print ("<th><input name=\"end_date[]\" type=\"text\"/></th>");                                                                                                
+                    print ("<th><input class=\"input\" name=\"company[]\" type=\"text\"/></th>");                                                        
+                    print ("<th><input class=\"input\" name=\"position[]\" type=\"text\"/></th>");                                                        
+                    print ("<th><input class=\"input\" name=\"start_date[]\" type=\"text\"/></th>");                                                        
+                    print ("<th><input class=\"input\" name=\"end_date[]\" type=\"text\"/></th>");                                                                                                
                     print ("<tr>");
              
              
@@ -56,7 +56,7 @@
     <div class="control-group">  
         <button type="button" id="del" class="btn">Delete Selected</button>
         <button type="button" id="add" class="btn">Add More</button>
-        <button type="submit" class="btn">Save</button>
+        <button id ="save" type="submit" class="btn">Save</button>
     </div>
     
     <?php  
@@ -88,6 +88,8 @@
 <!--
 $(document).ready(function() {
     
+    $('.input').keyup(informAboutChanges);
+    
     $('#del').click(function() 
     {
         var dels = [];
@@ -114,11 +116,12 @@ $(document).ready(function() {
   $('#add').click(function() 
   {  
     var checkbox = ('<tr><th><input class =\"delete_box\" type=\"checkbox\" id = \"sel0\"/\></th>');
-    var company = ('<th><input name=\"company[]\" type=\"text\"/\></th>');
-    var position = ("<th><input name=\"position[]\" type=\"text\"/\></th>"); 
-    var start_date =  ("<th><input name=\"start_date[]\" type=\"text\"/\></th>");                                                        
-    var end_date = ("<th><input name=\"end_date[]\" type=\"text\"/\></th></tr>");        
-    $('#table tr:last').after(checkbox + company + position + start_date + end_date);      
+    var company = ('<th><input class=\"input\" name=\"company[]\" type=\"text\"/\></th>');
+    var position = ("<th><input class=\"input\" name=\"position[]\" type=\"text\"/\></th>"); 
+    var start_date =  ("<th><input class=\"input\" name=\"start_date[]\" type=\"text\"/\></th>");                                                        
+    var end_date = ("<th><input class=\"input\" name=\"end_date[]\" type=\"text\"/\></th></tr>");        
+    $('#table tr:last').after(checkbox + company + position + start_date + end_date);  
+    informAboutChanges();    
   }); 
 });
 --></script>

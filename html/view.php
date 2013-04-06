@@ -60,5 +60,19 @@
             ];
     }
     
-    renderMiddlePart("view.php", ["edu" => $edu, "wexps" => $wexps, "goal" => $goal, "info" => $info, "title" => "Personal Info"]);
+    $rows = query("select * from projects where user_id = ?", $id);
+    $projects = []; 
+    foreach ($rows as $row)
+    {  
+        $projects[] = [
+            "project_name" => $row["name"],
+            "workload" => $row["workload"],
+            "responsibilities" => $row["responsibilities"],
+            "role" => $row["role"],
+            "technologies" => $row["technologies"],                        
+            "project_id" => $row["id"]          
+            ];
+    }
+    
+    renderMiddlePart("view.php", ["projects" => $projects, "edu" => $edu, "wexps" => $wexps, "goal" => $goal, "info" => $info, "title" => "Personal Info"]);
 ?>

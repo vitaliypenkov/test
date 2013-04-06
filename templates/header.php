@@ -16,30 +16,32 @@
 
         <script src="js/jquery-1.8.2.js"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="js/scripts.js"></script>    
+        
 
     </head>
 
     <body>
-
-        <div class="container-fluid">
-
+    
+  
+						
+        <div id="back">
+        <div class="container-fluid" >
             <div id="top">
             <?php
             if (!empty($_SESSION["id"]))
             { 
             ?>
-            <div class="log-name">Greetings, 
-                <b><?php
-                 $id =  $_SESSION["id"]; 
-                 $rows = query("SELECT username from users where id = ?" , $id);                 
-                 $name = $rows[0]["username"];
-                 echo $name;                 
-                ?></b> ! 
-                <a class="nav nav-pills" href="logout.php">Log Out</a>
+                <div class="log-name">Greetings, 
+                    <b><?php
+                     $id =  $_SESSION["id"]; 
+                     $rows = query("SELECT username from users where id = ?" , $id);                 
+                     $name = $rows[0]["username"];
+                     echo $name;                 
+                    ?></b> ! 
+                    <a class="nav nav-pills" href="logout.php">Log Out</a>
                 </div>
-                 <?php } ?>
-               
+            <?php } ?>               
                 <a href="/"><img alt="CV Maker" src="img/logo.png"/></a>
             </div>
 
