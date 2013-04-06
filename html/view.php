@@ -2,7 +2,13 @@
     
     require("../includes/config.php"); 
   
-    $id  = $_SESSION["id"]; 
+    if (empty($_SESSION["id"]))
+    {
+      $id = $_GET["user_id"];
+    }
+    else {
+      $id  = $_SESSION["id"]; 
+    }
     $rows = [];
     if (!empty($_GET["user_id"]))
     {
